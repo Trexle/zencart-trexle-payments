@@ -5,7 +5,11 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version $Id: orders.php 19530 2011-09-19 13:52:37Z ajeh $
+<<<<<<< HEAD
  * MODIFIED for Trexle Payments by ZenExpert
+=======
+ * MODIFIED for Pin Payments by ZenExpert
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
  */
 
   require('includes/application_top.php');
@@ -260,7 +264,11 @@
 
       case 'doRefund':
         $order = new order($oID);
+<<<<<<< HEAD
           // bof Trexle Payments
+=======
+          // bof Pin Payments
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
               if (isset($_POST['typeRefund'])){
                   if ($order->info['payment_module_code']) {
                       if (file_exists(DIR_FS_CATALOG_MODULES . 'payment/' . $order->info['payment_module_code'] . '.php')) {
@@ -284,7 +292,11 @@
               }
               else
               {
+<<<<<<< HEAD
                   // eof Trexle Payments
+=======
+                  // eof Pin Payments
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
 
                   if ($order->info['payment_module_code']) {
                       if (file_exists(DIR_FS_CATALOG_MODULES . 'payment/' . $order->info['payment_module_code'] . '.php')) {
@@ -296,9 +308,15 @@
                           }
                       }
                   }
+<<<<<<< HEAD
                   // bof Trexle Payments
               }
           // eof Trexle Payments
+=======
+                  // bof Pin Payments
+              }
+          // eof Pin Payments
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
         zen_record_admin_activity('Order ' . $oID . ' refund processed. See order comments for details.', 'info');
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
@@ -714,8 +732,13 @@ function couponpopupWindow(url) {
         </table></td>
       </form></tr>
 
+<<<<<<< HEAD
     <!-- do refund with trexle payments -->
       <?php if (zen_trexle_get_token_by_order(zen_db_input($oID))!='') { ?>
+=======
+    <!-- do refund with pin payments -->
+      <?php if (zen_pin_get_token_by_order(zen_db_input($oID))!='') { ?>
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
       <tr>
           <?php echo zen_draw_form('refund', FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=doRefund', 'post', '', true); ?>
       <td><table border="0" cellspacing="0" cellpadding="2" class="noprint">
@@ -741,7 +764,11 @@ function couponpopupWindow(url) {
           </tr>
         </table></td>
         <input type="hidden" name="typeRefund" />
+<<<<<<< HEAD
         <input type="hidden" name="akey" value="<?php echo zen_trexle_get_token_by_order(zen_db_input($oID));?>" />
+=======
+        <input type="hidden" name="akey" value="<?php echo zen_pin_get_token_by_order(zen_db_input($oID));?>" />
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
     </form>
       </tr>
       <script type="text/javascript">
@@ -771,7 +798,11 @@ function couponpopupWindow(url) {
 
       </script>
         <?php } ?>
+<<<<<<< HEAD
     <!-- do refund with trexle payments -->
+=======
+    <!-- do refund with pin payments -->
+>>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
 
       <tr>
         <td colspan="2" align="right" class="noprint"><?php echo '<a href="' . zen_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action'))) . '">' . zen_image_button('button_orders.gif', IMAGE_ORDERS) . '</a>'; ?></td>
