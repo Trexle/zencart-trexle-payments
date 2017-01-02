@@ -3,7 +3,7 @@ function zen_get_customer_trexle_token($customer_id){
     global $db;
 
     $customer_tokens_query = "select *
-                              from " . TABLE_PIN_TOKENS . "
+                              from " . TABLE_TREXLE_TOKENS . "
                               where customer_id = '" . (int)$customer_id . "'";
 
     $customer_tokens = $db->Execute($customer_tokens_query);
@@ -28,7 +28,7 @@ function zen_check_existing_customer_trexle_token($customer_id, $unique_card){
     global $db;
 
     $customer_tokens_query = "select *
-                              from " . TABLE_PIN_TOKENS . "
+                              from " . TABLE_TREXLE_TOKENS . "
                               where customer_id = '" . (int)$customer_id . "' AND unique_card='".$unique_card."'";
 
     $customer_tokens = $db->Execute($customer_tokens_query);
@@ -45,7 +45,7 @@ function zen_check_existing_customer_trexle_token($customer_id, $unique_card){
 function zen_del_customer_trexle_token($customer_id, $unique_card){
     global $db;
 
-    $customer_tokens_query = "delete from " . TABLE_PIN_TOKENS . "
+    $customer_tokens_query = "delete from " . TABLE_TREXLE_TOKENS . "
                               where customer_id = '" . (int)$customer_id . "' AND unique_card='".$unique_card."'";
 
     $customer_tokens = $db->Execute($customer_tokens_query);

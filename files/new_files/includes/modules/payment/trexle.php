@@ -65,19 +65,19 @@ class trexle extends base {
 
         $this->code = 'trexle';
         if (IS_ADMIN_FLAG === true) {
-            $this->title = MODULE_PAYMENT_PIN_TEXT_ADMIN_TITLE; // Payment module title in Admin
-            if (MODULE_PAYMENT_PIN_TESTMODE == 'Test') {
+            $this->title = MODULE_PAYMENT_TREXLE_TEXT_ADMIN_TITLE; // Payment module title in Admin
+            if (MODULE_PAYMENT_TREXLE_TESTMODE == 'Test') {
                 $this->title .= '<span class="alert"> (in Testing mode)</span>';
             }
         } else {
-            $this->title = MODULE_PAYMENT_PIN_TEXT_CATALOG_TITLE; // Payment module title in Catalog
+            $this->title = MODULE_PAYMENT_TREXLE_TEXT_CATALOG_TITLE; // Payment module title in Catalog
         }
-        $this->description = MODULE_PAYMENT_PIN_TEXT_DESCRIPTION;
-        $this->enabled = ((MODULE_PAYMENT_PIN_STATUS == 'True') ? true : false);
-        $this->sort_order = MODULE_PAYMENT_PIN_SORT_ORDER;
+        $this->description = MODULE_PAYMENT_TREXLE_TEXT_DESCRIPTION;
+        $this->enabled = ((MODULE_PAYMENT_TREXLE_STATUS == 'True') ? true : false);
+        $this->sort_order = MODULE_PAYMENT_TREXLE_SORT_ORDER;
 
-        if ((int)MODULE_PAYMENT_PIN_ORDER_STATUS_ID > 0) {
-            $this->order_status = MODULE_PAYMENT_PIN_ORDER_STATUS_ID;
+        if ((int)MODULE_PAYMENT_TREXLE_ORDER_STATUS_ID > 0) {
+            $this->order_status = MODULE_PAYMENT_TREXLE_ORDER_STATUS_ID;
         }
 
         $this->form_action_url = zen_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL', false); // Page to go to upon submitting page info
@@ -134,9 +134,9 @@ class trexle extends base {
     function update_status() {
         global $order, $db;
 
-        if ($this->enabled && (int)MODULE_PAYMENT_PIN_ZONE > 0 && isset($order->billing['country']['id'])) {
+        if ($this->enabled && (int)MODULE_PAYMENT_TREXLE_ZONE > 0 && isset($order->billing['country']['id'])) {
             $check_flag = false;
-            $check = $db->Execute("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_PIN_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
+            $check = $db->Execute("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_PAYMENT_TREXLE_ZONE . "' and zone_country_id = '" . $order->billing['country']['id'] . "' order by zone_id");
             while (!$check->EOF) {
                 if ($check->fields['zone_id'] < 1) {
                     $check_flag = true;
@@ -167,32 +167,32 @@ class trexle extends base {
                  { '.
             '    var cc_owner = document.checkout_payment.trexle_cc_owner.value;' . "\n" .
             '    var cc_number = document.checkout_payment.trexle_cc_number.value;' . "\n";
-        //if (MODULE_PAYMENT_PIN_USE_CVV == 'True')  {
+        //if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True')  {
             $js .= '    var cc_cvv = document.checkout_payment.trexle_cc_cvv.value;' . "\n";
         //}
         $js .= '    if (cc_owner == "" || cc_owner.length < ' . CC_OWNER_MIN_LENGTH . ') {' . "\n" .
-            '      error_message = error_message + "' . MODULE_PAYMENT_PIN_TEXT_JS_CC_OWNER . '";' . "\n" .
+            '      error_message = error_message + "' . MODULE_PAYMENT_TREXLE_TEXT_JS_CC_OWNER . '";' . "\n" .
             '      error = 1;' . "\n" .
             '    }' . "\n" .
             '    if (cc_number == "" || cc_number.length < ' . CC_NUMBER_MIN_LENGTH . ') {' . "\n" .
-            '      error_message = error_message + "' . MODULE_PAYMENT_PIN_TEXT_JS_CC_NUMBER . '";' . "\n" .
+            '      error_message = error_message + "' . MODULE_PAYMENT_TREXLE_TEXT_JS_CC_NUMBER . '";' . "\n" .
             '      error = 1;' . "\n" .
             '    }' . "\n";
-        //if (MODULE_PAYMENT_PIN_USE_CVV == 'True')  {
+        //if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True')  {
             $js .= '    if (cc_cvv == "" || cc_cvv.length < "3" || cc_cvv.length > "4") {' . "\n".
-                '      error_message = error_message + "' . MODULE_PAYMENT_PIN_TEXT_JS_CC_CVV . '";' . "\n" .
+                '      error_message = error_message + "' . MODULE_PAYMENT_TREXLE_TEXT_JS_CC_CVV . '";' . "\n" .
                 '      error = 1;' . "\n" .
                 '    }' . "\n" ;
         //}
         $js .= '  } ' . "\n";
         $js .= '   else {' . "\n";
 
-        //if (MODULE_PAYMENT_PIN_USE_CVV == 'True')  {
+        //if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True')  {
         $js .= '    var trexle_cc_token = document.checkout_payment.trexle_cc_token.value;' . "\n";
         $js .= '    var token_cc_cvv = document.getElementById("trexletoken-cc-cvv-"+trexle_cc_token).value;' . "\n";
 
         $js .= '    if (token_cc_cvv == "" || token_cc_cvv.length < "3" || token_cc_cvv.length > "4") {' . "\n".
-            '      error_message = error_message + "' . MODULE_PAYMENT_PIN_TEXT_JS_CC_CVV . '";' . "\n" .
+            '      error_message = error_message + "' . MODULE_PAYMENT_TREXLE_TEXT_JS_CC_CVV . '";' . "\n" .
             '      error = 1;' . "\n" .
             '    }' . "\n" ;
         // }
@@ -243,7 +243,7 @@ class trexle extends base {
                         'tag' => $this->code . '-cc-token-' . $ind);
 
 //                    $selection['fields'][] = array('title' => $tokens["cardinfo"],
-//                        'field' => zen_draw_input_field('trexle_token_cc_cvv_' . $tokens[$ind]["token"], '', 'size="4" maxlength="4"' . ' id="' . $this->code . 'token-cc-cvv-' . $tokens[$ind]["token"] . '"' . $onFocus . ' autocomplete="off"') . ' ' . '<a href="javascript:popupWindow(\'' . zen_href_link(FILENAME_POPUP_CVV_HELP) . '\')">' . MODULE_PAYMENT_PIN_TEXT_POPUP_CVV_LINK . '</a>',
+//                        'field' => zen_draw_input_field('trexle_token_cc_cvv_' . $tokens[$ind]["token"], '', 'size="4" maxlength="4"' . ' id="' . $this->code . 'token-cc-cvv-' . $tokens[$ind]["token"] . '"' . $onFocus . ' autocomplete="off"') . ' ' . '<a href="javascript:popupWindow(\'' . zen_href_link(FILENAME_POPUP_CVV_HELP) . '\')">' . MODULE_PAYMENT_TREXLE_TEXT_POPUP_CVV_LINK . '</a>',
 //                        'tag' => $this->code . '-cc-cvv-' . $ind);
                 }
 
@@ -273,23 +273,23 @@ class trexle extends base {
                     'tag' => $this->code . '-use-token');
             } // end if count tokens gt zero
             $selection['fields'][] =
-                array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_OWNER,
+                array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_OWNER,
                     'field' => zen_draw_input_field('trexle_cc_owner', $order->billing['firstname'] . ' ' . $order->billing['lastname'], 'id="'.$this->code.'-cc-owner"' . $onFocus . ' autocomplete="off"'),
                     'tag' => $this->code.'-cc-owner');
             $selection['fields'][] =
-                array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_NUMBER,
+                array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_NUMBER,
                     'field' => zen_draw_input_field('trexle_cc_number', '', 'id="'.$this->code.'-cc-number"' . $onFocus . ' autocomplete="off"'),
                     'tag' => $this->code.'-cc-number');
-            $selection['fields'][] = array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_EXPIRES,
+            $selection['fields'][] = array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_EXPIRES,
                 'field' => zen_draw_pull_down_menu('trexle_cc_expires_month', $expires_month, strftime('%m'), 'id="'.$this->code.'-cc-expires-month"' . $onFocus) . '&nbsp;' . zen_draw_pull_down_menu('trexle_cc_expires_year', $expires_year, '', 'id="'.$this->code.'-cc-expires-year"' . $onFocus),
                 'tag' => $this->code.'-cc-expires-month');
-            //if (MODULE_PAYMENT_PIN_USE_CVV == 'True') {
-            $selection['fields'][] = array('title' => MODULE_PAYMENT_PIN_TEXT_CVV,
-                'field' => zen_draw_input_field('trexle_cc_cvv', '', 'size="4" maxlength="4"' . ' id="'.$this->code.'cc-cvv"' . $onFocus . ' autocomplete="off"') . ' ' . '<a href="javascript:popupWindow(\'' . zen_href_link(FILENAME_POPUP_CVV_HELP) . '\')">' . MODULE_PAYMENT_PIN_TEXT_POPUP_CVV_LINK . '</a>',
+            //if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True') {
+            $selection['fields'][] = array('title' => MODULE_PAYMENT_TREXLE_TEXT_CVV,
+                'field' => zen_draw_input_field('trexle_cc_cvv', '', 'size="4" maxlength="4"' . ' id="'.$this->code.'cc-cvv"' . $onFocus . ' autocomplete="off"') . ' ' . '<a href="javascript:popupWindow(\'' . zen_href_link(FILENAME_POPUP_CVV_HELP) . '\')">' . MODULE_PAYMENT_TREXLE_TEXT_POPUP_CVV_LINK . '</a>',
                 'tag' => $this->code.'-cc-cvv');
             //}
 
-            $selection['fields'][] = array('title' => MODULE_PAYMENT_PIN_STORE_TOKEN,
+            $selection['fields'][] = array('title' => MODULE_PAYMENT_TREXLE_STORE_TOKEN,
                 'field' => zen_draw_checkbox_field('store_token', 'true', false ,'size="4" maxlength="4"' . ' id="'.$this->code.'-store-token"'),
                 'tag' => $this->code.'-store-token');
             //}
@@ -354,11 +354,11 @@ class trexle extends base {
         }
         else if (isset($_POST['trexle_cc_number'])) {
             $confirmation = array('title' => $this->title . ': ' . $this->cc_card_type,
-                'fields' => array(array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_OWNER,
+                'fields' => array(array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_OWNER,
                     'field' => $_POST['trexle_cc_owner']),
-                    array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_NUMBER,
+                    array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_NUMBER,
                         'field' => substr($this->cc_card_number, 0, 4) . str_repeat('X', (strlen($this->cc_card_number) - 8)) . substr($this->cc_card_number, -4)),
-                    array('title' => MODULE_PAYMENT_PIN_TEXT_CREDIT_CARD_EXPIRES,
+                    array('title' => MODULE_PAYMENT_TREXLE_TEXT_CREDIT_CARD_EXPIRES,
                         'field' => strftime('%B, %Y', mktime(0,0,0,$_POST['trexle_cc_expires_month'], 1, '20' . $_POST['trexle_cc_expires_year'])))));
         } else {
             $confirmation = array(); //array('title' => $this->title);
@@ -382,7 +382,7 @@ class trexle extends base {
                 zen_draw_hidden_field('cc_number', "").
                 zen_draw_hidden_field('cc_expiry_year', "").
                 zen_draw_hidden_field('cc_expiry_month', "");
-            //if (MODULE_PAYMENT_PIN_USE_CVV == 'True') {
+            //if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True') {
                 $process_button_string .= zen_draw_hidden_field('cc_cvv', "");
             //}
         }
@@ -393,7 +393,7 @@ class trexle extends base {
                 zen_draw_hidden_field('cc_number', $this->cc_card_number).
                 zen_draw_hidden_field('cc_expiry_year', $this->cc_expiry_year).
                 zen_draw_hidden_field('cc_expiry_month', $this->cc_expiry_month);
-           // if (MODULE_PAYMENT_PIN_USE_CVV == 'True') {
+           // if (MODULE_PAYMENT_TREXLE_USE_CVV == 'True') {
                 $process_button_string .= zen_draw_hidden_field('cc_cvv', $_POST['trexle_cc_cvv']);
           //  }
 
@@ -457,9 +457,9 @@ class trexle extends base {
                 'x_exp_year' => $_POST['cc_expiry_year'],
                 'x_card_code' => $_POST['cc_cvv'],
                 'x_card_owner' => $_POST['cc_owner'],
-                'x_email_customer' => MODULE_PAYMENT_PIN_EMAIL_CUSTOMER == 'True' ? 'TRUE': 'FALSE',
+                'x_email_customer' => MODULE_PAYMENT_TREXLE_EMAIL_CUSTOMER == 'True' ? 'TRUE': 'FALSE',
                 'x_cust_id' => $_SESSION['customer_id'],
-                'x_invoice_num' => (MODULE_PAYMENT_PIN_TESTMODE == 'Test' ? 'TEST-' : '') . $new_order_id,
+                'x_invoice_num' => (MODULE_PAYMENT_TREXLE_TESTMODE == 'Test' ? 'TEST-' : '') . $new_order_id,
                 'x_first_name' => $order->billing['firstname'],
                 'x_last_name' => $order->billing['lastname'],
                 'x_company' => $order->billing['company'],
@@ -508,7 +508,7 @@ class trexle extends base {
 
             $response = $this->_sendRequest($submit_data);
             if ($response['status'] == 'success'){
-                $sql = "insert into " . TABLE_PIN_ORDER_TOKENS . " (order_id, token, created_date) values (:order_id, :token ,now() )";
+                $sql = "insert into " . TABLE_TREXLE_ORDER_TOKENS . " (order_id, token, created_date) values (:order_id, :token ,now() )";
                 $sql = $db->bindVars($sql, ':order_id', $order_id, 'integer');
                 $sql = $db->bindVars($sql, ':token', $response['transactionindex'], 'string');
                 $db->Execute($sql);
@@ -543,7 +543,7 @@ class trexle extends base {
     function check() {
         global $db;
         if (!isset($this->_check)) {
-            $check_query = $db->Execute("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_PIN_STATUS'");
+            $check_query = $db->Execute("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_PAYMENT_TREXLE_STATUS'");
             $this->_check = $check_query->RecordCount();
         }
         return $this->_check;
@@ -554,21 +554,21 @@ class trexle extends base {
      */
     function install() {
         global $db, $messageStack;
-        if (defined('MODULE_PAYMENT_PIN_STATUS')) {
+        if (defined('MODULE_PAYMENT_TREXLE_STATUS')) {
             $messageStack->add_session('Trexle Payments module already installed.', 'error');
             zen_redirect(zen_href_link(FILENAME_MODULES, 'set=payment&module=trexle', 'NONSSL'));
             return 'failed';
         }
         
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Trexle Payments Module', 'MODULE_PAYMENT_PIN_STATUS', 'True', 'Do you want to accept trexle payments?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added, use_function) values ('Transaction Key', 'MODULE_PAYMENT_PIN_TXNKEY', 'Test', 'Your Secret Key', '6', '0', now(), 'zen_cfg_password_display')");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Transaction Mode', 'MODULE_PAYMENT_PIN_TESTMODE', 'Test', 'Transaction mode used for processing orders', '6', '0', 'zen_cfg_select_option(array(\'Test\', \'Live\'), ', now())");
-        //$db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Request CVV Number', 'MODULE_PAYMENT_PIN_USE_CVV', 'False', 'Do you want to ask the customer for the card\'s CVV number', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Customer Notifications', 'MODULE_PAYMENT_PIN_EMAIL_CUSTOMER', 'False', 'Should Trexle payments email a receipt to the customer?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort order of display.', 'MODULE_PAYMENT_PIN_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Payment Zone', 'MODULE_PAYMENT_PIN_ZONE', '0', 'If a zone is selected, only enable this payment method for that zone.', '6', '2', 'zen_get_zone_class_title', 'zen_cfg_pull_down_zone_classes(', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Order Status', 'MODULE_PAYMENT_PIN_ORDER_STATUS_ID', '1', 'Set the status of orders made with this payment module to this value', '6', '0', 'zen_cfg_pull_down_order_statuses(', 'zen_get_order_status_name', now())");
-        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Debug Mode', 'MODULE_PAYMENT_PIN_DEBUGGING', 'Alerts Only', 'Would you like to enable debug mode?  A  detailed log of failed transactions may be emailed to the store owner.', '6', '0', 'zen_cfg_select_option(array(\'Off\', \'Alerts Only\', \'Log File\', \'Log and Email\'), ', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Trexle Payments Module', 'MODULE_PAYMENT_TREXLE_STATUS', 'True', 'Do you want to accept trexle payments?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added, use_function) values ('Transaction Key', 'MODULE_PAYMENT_TREXLE_TXNKEY', 'Test', 'Your Secret Key', '6', '0', now(), 'zen_cfg_password_display')");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Transaction Mode', 'MODULE_PAYMENT_TREXLE_TESTMODE', 'Test', 'Transaction mode used for processing orders', '6', '0', 'zen_cfg_select_option(array(\'Test\', \'Live\'), ', now())");
+        //$db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Request CVV Number', 'MODULE_PAYMENT_TREXLE_USE_CVV', 'False', 'Do you want to ask the customer for the card\'s CVV number', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Customer Notifications', 'MODULE_PAYMENT_TREXLE_EMAIL_CUSTOMER', 'False', 'Should Trexle payments email a receipt to the customer?', '6', '0', 'zen_cfg_select_option(array(\'True\', \'False\'), ', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort order of display.', 'MODULE_PAYMENT_TREXLE_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '0', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Payment Zone', 'MODULE_PAYMENT_TREXLE_ZONE', '0', 'If a zone is selected, only enable this payment method for that zone.', '6', '2', 'zen_get_zone_class_title', 'zen_cfg_pull_down_zone_classes(', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Order Status', 'MODULE_PAYMENT_TREXLE_ORDER_STATUS_ID', '1', 'Set the status of orders made with this payment module to this value', '6', '0', 'zen_cfg_pull_down_order_statuses(', 'zen_get_order_status_name', now())");
+        $db->Execute("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Debug Mode', 'MODULE_PAYMENT_TREXLE_DEBUGGING', 'Alerts Only', 'Would you like to enable debug mode?  A  detailed log of failed transactions may be emailed to the store owner.', '6', '0', 'zen_cfg_select_option(array(\'Off\', \'Alerts Only\', \'Log File\', \'Log and Email\'), ', now())");
         $db->Execute("CREATE TABLE IF NOT EXISTS `trexle` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL DEFAULT '0',
@@ -609,7 +609,7 @@ class trexle extends base {
      */
     function remove() {
         global $db, $messageStack;
-        $db->Execute("delete from " . TABLE_CONFIGURATION . " where configuration_key LIKE '%PIN%'");
+        $db->Execute("delete from " . TABLE_CONFIGURATION . " where configuration_key LIKE '%TREXLE%'");
         $messageStack->add_session('Trexle Payments module successfully REMOVED. Database tables used by Trexle Payments were not removed for security reasons. If you want to delete these tables, please do it manually using phpMyAdmin or similar tools.', 'success');
     }
     /**
@@ -618,14 +618,14 @@ class trexle extends base {
      * @return array
      */
     function keys() {
-        return array('MODULE_PAYMENT_PIN_STATUS','MODULE_PAYMENT_PIN_TXNKEY', 'MODULE_PAYMENT_PIN_TESTMODE',  'MODULE_PAYMENT_PIN_EMAIL_CUSTOMER', 'MODULE_PAYMENT_PIN_ZONE', 'MODULE_PAYMENT_PIN_ORDER_STATUS_ID', 'MODULE_PAYMENT_PIN_SORT_ORDER', 'MODULE_PAYMENT_PIN_GATEWAY_MODE', 'MODULE_PAYMENT_PIN_STORE_DATA', 'MODULE_PAYMENT_PIN_DEBUGGING');
+        return array('MODULE_PAYMENT_TREXLE_STATUS','MODULE_PAYMENT_TREXLE_TXNKEY', 'MODULE_PAYMENT_TREXLE_TESTMODE',  'MODULE_PAYMENT_TREXLE_EMAIL_CUSTOMER', 'MODULE_PAYMENT_TREXLE_ZONE', 'MODULE_PAYMENT_TREXLE_ORDER_STATUS_ID', 'MODULE_PAYMENT_TREXLE_SORT_ORDER', 'MODULE_PAYMENT_TREXLE_GATEWAY_MODE', 'MODULE_PAYMENT_TREXLE_STORE_DATA', 'MODULE_PAYMENT_TREXLE_DEBUGGING');
     }
     /**
      * Calculate validity of response
      */
     function calc_md5_response($trans_id = '', $amount = '') {
         if ($amount == '' || $amount == '0') $amount = '0.00';
-        $validating = md5(MODULE_PAYMENT_PIN_MD5HASH . MODULE_PAYMENT_PIN_LOGIN . $trans_id . $amount);
+        $validating = md5(MODULE_PAYMENT_TREXLE_MD5HASH . MODULE_PAYMENT_TREXLE_LOGIN . $trans_id . $amount);
         return strtoupper($validating);
     }
     /**
@@ -635,7 +635,7 @@ class trexle extends base {
         global $db, $messageStack;
         if ($order_time == '') $order_time = date("F j, Y, g:i a");
 
-        if (MODULE_PAYMENT_PIN_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_PIN_TESTMODE, 'Test')) {
+        if (MODULE_PAYMENT_TREXLE_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_TREXLE_TESTMODE, 'Test')) {
             $this->form_action_url = 'https://core.trexle.com/api/v1';
         } else {
             $this->form_action_url = 'https://test-core.trexle.com/api/v1';
@@ -662,7 +662,7 @@ class trexle extends base {
         // This can be turned on and off if the Admin Section
 
         // Insert the data into the database
-        $sql = "insert into " . TABLE_PIN . "  (id, customer_id, order_id, authorization_type, transaction_id, sent, received, time, session_id) values (NULL, :custID, :orderID, :authType, :transID, :sentData, :recvData, :orderTime, :sessID )";
+        $sql = "insert into " . TABLE_TREXLE . "  (id, customer_id, order_id, authorization_type, transaction_id, sent, received, time, session_id) values (NULL, :custID, :orderID, :authType, :transID, :sentData, :recvData, :orderTime, :sessID )";
         $sql = $db->bindVars($sql, ':custID', $_SESSION['customer_id'], 'integer');
         $sql = $db->bindVars($sql, ':orderID', preg_replace('/[^0-9]/', '', (int)$new_order_id), 'integer');
         $sql = $db->bindVars($sql, ':authType', 'CREDIT', 'string');
@@ -679,10 +679,10 @@ class trexle extends base {
      */
     function tableCheckup() {
         global $db, $sniffer, $messageStack;
-        $trexletable = (method_exists($sniffer, 'table_exists')) ? ($sniffer->table_exists(TABLE_PIN) ? '' : $messageStack->add_session('Trexle Payments database tables not detected. Please run the SQL patch manually.', 'error')) : -1;
-//        $fieldOkay1 = (method_exists($sniffer, 'field_type')) ? $sniffer->field_type(TABLE_PIN, 'transaction_id', 'bigint(20)', true) : -1;
+        $trexletable = (method_exists($sniffer, 'table_exists')) ? ($sniffer->table_exists(TABLE_TREXLE) ? '' : $messageStack->add_session('Trexle Payments database tables not detected. Please run the SQL patch manually.', 'error')) : -1;
+//        $fieldOkay1 = (method_exists($sniffer, 'field_type')) ? $sniffer->field_type(TABLE_TREXLE, 'transaction_id', 'bigint(20)', true) : -1;
 //        if ($fieldOkay1 !== true) {
-//            $db->Execute("ALTER TABLE " . TABLE_PIN . " CHANGE transaction_id transaction_id varchar(64) default NULL");
+//            $db->Execute("ALTER TABLE " . TABLE_TREXLE . " CHANGE transaction_id transaction_id varchar(64) default NULL");
 //        }
     }
 
@@ -698,13 +698,13 @@ class trexle extends base {
 
         $gateway =  \Omnipay\Common\GatewayFactory::create('Trexle');
 
-        if (MODULE_PAYMENT_PIN_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_PIN_TESTMODE, 'Test')) {
+        if (MODULE_PAYMENT_TREXLE_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_TREXLE_TESTMODE, 'Test')) {
             $testmode = false;
         } else {
             $testmode = true;
         }
         $gateway->initialize(array(
-            'secretKey' => MODULE_PAYMENT_PIN_TXNKEY,
+            'secretKey' => MODULE_PAYMENT_TREXLE_TXNKEY,
             'testMode'  => $testmode, // Or false when you are ready for live transactions
         ));
 
@@ -739,7 +739,7 @@ class trexle extends base {
                 $cus_id = $card_id = $generated_token = '';
                 if (isset($submit_data['x_store_token']) && $submit_data['x_store_token'])
                 {
-                    $generated_token = $this->hmac(MODULE_PAYMENT_PIN_TXNKEY, strtolower($submit_data['x_card_owner'] . $submit_data['x_card_num'] . $submit_data['x_exp_month'] . $submit_data['x_exp_year']));
+                    $generated_token = $this->hmac(MODULE_PAYMENT_TREXLE_TXNKEY, strtolower($submit_data['x_card_owner'] . $submit_data['x_card_num'] . $submit_data['x_exp_month'] . $submit_data['x_exp_year']));
                     $card_token = zen_check_existing_customer_trexle_token($_SESSION['customer_id'], $generated_token);
                     if ($card_token === false)
                     {
@@ -820,7 +820,7 @@ class trexle extends base {
                     $cardinfo .= ")";
 
                     if ($cardinfo!=""){
-                        $sql = "insert into " . TABLE_PIN_TOKENS . " (token, customer_id, cardinfo, unique_card, card_token, date_added) values (:token, :customer_id, :cardinfo, :unique_card, :card_token, now() )";
+                        $sql = "insert into " . TABLE_TREXLE_TOKENS . " (token, customer_id, cardinfo, unique_card, card_token, date_added) values (:token, :customer_id, :cardinfo, :unique_card, :card_token, now() )";
                         $sql = $db->bindVars($sql, ':token', $cus_id, 'string');
                         $sql = $db->bindVars($sql, ':customer_id', $_SESSION['customer_id'], 'integer');
                         $sql = $db->bindVars($sql, ':cardinfo', $cardinfo, 'string');
@@ -850,13 +850,13 @@ class trexle extends base {
 
         $gateway = \Omnipay\Common\GatewayFactory::create('Trexle');
 
-        if (MODULE_PAYMENT_PIN_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_PIN_TESTMODE, 'Test')) {
+        if (MODULE_PAYMENT_TREXLE_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_TREXLE_TESTMODE, 'Test')) {
             $testmode = false;
         } else {
             $testmode = true;
         }
         $gateway->initialize(array(
-            'secretKey' => MODULE_PAYMENT_PIN_TXNKEY,
+            'secretKey' => MODULE_PAYMENT_TREXLE_TXNKEY,
             'testMode' => $testmode, // Or false when you are ready for live transactions
         ));
 
@@ -874,13 +874,13 @@ class trexle extends base {
 //
 //        $stripe =  Omnipay\Stripe\Gateway('Gateway');
 //
-//        if (MODULE_PAYMENT_PIN_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_PIN_TESTMODE, 'Test')) {
+//        if (MODULE_PAYMENT_TREXLE_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_TREXLE_TESTMODE, 'Test')) {
 //            $testmode = false;
 //        } else {
 //            $testmode = true;
 //        }
 //        $stripe->initialize(array(
-//            'apiKey' => MODULE_PAYMENT_PIN_TXNKEY,
+//            'apiKey' => MODULE_PAYMENT_TREXLE_TXNKEY,
 //            'testMode'  => $testmode, // Or false when you are ready for live transactions
 //        ));
 
@@ -923,7 +923,7 @@ class trexle extends base {
                     'customer_notified' => 0
                 );
                 zen_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
-                $messageStack->add_session(sprintf(MODULE_PAYMENT_PIN_TEXT_REFUND_INITIATED, urldecode($amount > 0 ? $amount. ' ' . $currency : 'full'), urldecode($tran_id)), 'success');
+                $messageStack->add_session(sprintf(MODULE_PAYMENT_TREXLE_TEXT_REFUND_INITIATED, urldecode($amount > 0 ? $amount. ' ' . $currency : 'full'), urldecode($tran_id)), 'success');
                 return true;
             }
             else{
@@ -933,7 +933,7 @@ class trexle extends base {
                     'customer_notified' => 0
                 );
                 zen_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
-                $messageStack->add_session(sprintf(MODULE_PAYMENT_PIN_TEXT_REFUND_INITIATED, urldecode($amount > 0 ? $amount. ' ' . $currency : 'full'), urldecode($tran_id)), 'error');
+                $messageStack->add_session(sprintf(MODULE_PAYMENT_TREXLE_TEXT_REFUND_INITIATED, urldecode($amount > 0 ? $amount. ' ' . $currency : 'full'), urldecode($tran_id)), 'error');
                 return false;
             }
         }
