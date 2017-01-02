@@ -29,7 +29,7 @@ class MapResourceIteratorFactoryTest extends \Guzzle\Tests\GuzzleTestCase
         $this->assertInstanceOf('Guzzle\Tests\Service\Mock\Model\MockCommandIterator', $iterator);
     }
 
-    public function testUsesWildcardMappings()
+    public function testUsesWildcardMaptrexlegs()
     {
         $factory = new MapResourceIteratorFactory(array(
             '*' => 'Guzzle\Tests\Service\Mock\Model\MockCommandIterator'
@@ -37,3 +37,4 @@ class MapResourceIteratorFactoryTest extends \Guzzle\Tests\GuzzleTestCase
         $iterator = $factory->build(new MockCommand());
         $this->assertInstanceOf('Guzzle\Tests\Service\Mock\Model\MockCommandIterator', $iterator);
     }
+}

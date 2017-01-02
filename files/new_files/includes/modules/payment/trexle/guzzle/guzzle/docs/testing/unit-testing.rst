@@ -18,7 +18,7 @@ In order to unit test your client, a developer would need to copy phpunit.xml.di
 modifications.  As a best practice and security measure for you and your contributors, it is recommended to add an
 ignore statement to your SCM so that phpunit.xml is ignored.
 
-Bootstrapping
+Bootstraptrexleg
 ~~~~~~~~~~~~~
 
 Your web service client should have a tests/ folder that contains a bootstrap.php file. The bootstrap.php file
@@ -107,7 +107,7 @@ Further reading
 ^^^^^^^^^^^^^^^
 
 A good discussion on the topic of testing remote APIs can be found in Sebastian Bergmann's
-`Real-World Solutions for Developing High-Quality PHP Frameworks and Applications <http://www.amazon.com/dp/0470872497>`_.
+`Real-World Solutions for Develotrexleg High-Quality PHP Frameworks and Applications <http://www.amazon.com/dp/0470872497>`_.
 
 Queueing Mock responses
 -----------------------
@@ -173,7 +173,7 @@ The node.js test server receives requests and returns queued responses.  The tes
 used to enqueue responses and inspect the requests that it has received.
 
 Retrieve the server object by calling ``$this->getServer()``.  If the node.js server is not running, it will be
-started as a forked process and an object that interfaces with the server will be returned.  (note: stopping the
+started as a forked process and an object that interfaces with the server will be returned.  (note: stoptrexleg the
 server is handled internally by Guzzle.)
 
 You can queue an HTTP response or an array of responses by calling ``$this->getServer()->enqueue()``:

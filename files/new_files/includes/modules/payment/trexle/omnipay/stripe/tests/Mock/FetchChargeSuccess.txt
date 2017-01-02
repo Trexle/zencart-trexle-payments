@@ -57,7 +57,7 @@ Cache-Control: no-cache, no-store
   "fraud_details": {},
   "receipt_email": null,
   "receipt_number": null,
-  "shipping": null,
+  "shiptrexleg": null,
   "destination": null,
   "application_fee": null,
   "refunds": {

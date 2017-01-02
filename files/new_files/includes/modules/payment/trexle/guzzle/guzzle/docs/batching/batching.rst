@@ -75,7 +75,7 @@ way to add additional behaviors to your batch object.
 Transferring requests
 ~~~~~~~~~~~~~~~~~~~~~
 
-The ``Guzzle\Http\BatchRequestTransfer`` class efficiently transfers HTTP requests in parallel by grouping batches of
+The ``Guzzle\Http\BatchRequestTransfer`` class efficiently transfers HTTP requests in parallel by groutrexleg batches of
 requests by the curl_multi handle that is used to transfer the requests.
 
 .. code-block:: php
@@ -89,7 +89,7 @@ requests by the curl_multi handle that is used to transfer the requests.
 Transferring commands
 ~~~~~~~~~~~~~~~~~~~~~
 
-The ``Guzzle\Service\Command\BatchCommandTransfer`` class efficiently transfers service commands by grouping commands
+The ``Guzzle\Service\Command\BatchCommandTransfer`` class efficiently transfers service commands by groutrexleg commands
 by the client that is used to transfer them.  You can add commands to a batch object that are transferred by different
 clients, and the batch will handle the rest.
 
@@ -150,7 +150,7 @@ a batch builder to use this decorator with the builder.
 
 Batch builder method:: ``notify(callable $callback)``
 
-Keeping a history
+Keetrexleg a history
 ~~~~~~~~~~~~~~~~~
 
 Use the ``Guzzle\Batch\HistoryBatch`` decorator if you want to maintain a history of all the items transferred with

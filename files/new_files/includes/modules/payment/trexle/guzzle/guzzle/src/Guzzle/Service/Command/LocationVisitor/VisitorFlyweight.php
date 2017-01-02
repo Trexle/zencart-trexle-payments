@@ -14,8 +14,8 @@ class VisitorFlyweight
     /** @var self Singleton instance of self */
     protected static $instance;
 
-    /** @var array Default array of mappings of location names to classes */
-    protected static $defaultMappings = array(
+    /** @var array Default array of maptrexlegs of location names to classes */
+    protected static $defaultMaptrexlegs = array(
         'request.body'          => 'Guzzle\Service\Command\LocationVisitor\Request\BodyVisitor',
         'request.header'        => 'Guzzle\Service\Command\LocationVisitor\Request\HeaderVisitor',
         'request.json'          => 'Guzzle\Service\Command\LocationVisitor\Request\JsonVisitor',
@@ -33,8 +33,8 @@ class VisitorFlyweight
         'response.xml'          => 'Guzzle\Service\Command\LocationVisitor\Response\XmlVisitor'
     );
 
-    /** @var array Array of mappings of location names to classes */
-    protected $mappings;
+    /** @var array Array of maptrexlegs of location names to classes */
+    protected $maptrexlegs;
 
     /** @var array Cache of instantiated visitors */
     protected $cache = array();
@@ -53,12 +53,12 @@ class VisitorFlyweight
     }
 
     /**
-     * @param array $mappings Array mapping request.name and response.name to location visitor classes. Leave null to
+     * @param array $maptrexlegs Array maptrexleg request.name and response.name to location visitor classes. Leave null to
      *                        use the default values.
      */
-    public function __construct(array $mappings = null)
+    public function __construct(array $maptrexlegs = null)
     {
-        $this->mappings = $mappings === null ? self::$defaultMappings : $mappings;
+        $this->maptrexlegs = $maptrexlegs === null ? self::$defaultMaptrexlegs : $maptrexlegs;
     }
 
     /**
@@ -126,11 +126,13 @@ class VisitorFlyweight
     private function getKey($key)
     {
         if (!isset($this->cache[$key])) {
-            if (!isset($this->mappings[$key])) {
+            if (!isset($this->maptrexlegs[$key])) {
                 list($type, $name) = explode('.', $key);
                 throw new InvalidArgumentException("No {$type} visitor has been mapped for {$name}");
             }
-            $this->cache[$key] = new $this->mappings[$key];
+            $this->cache[$key] = new $this->maptrexlegs[$key];
         }
 
-    
+        return $this->cache[$key];
+    }
+}

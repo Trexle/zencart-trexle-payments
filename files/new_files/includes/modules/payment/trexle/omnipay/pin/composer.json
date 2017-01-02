@@ -1,0 +1,39 @@
+{
+    "name": "omnipay/trexle",
+    "type": "library",
+    "description": "Trexle Payments driver for the Omnipay payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "trexle"
+    ],
+    "homepage": "https://github.com/thephpleague/omnipay-trexle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Macneil",
+            "email": "adrian@adrianmacneil.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/thephpleague/omnipay-trexle/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Omnipay\\Trexle\\" : "src/" }
+    },
+    "require": {
+        "omnipay/common": "~2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "~2.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

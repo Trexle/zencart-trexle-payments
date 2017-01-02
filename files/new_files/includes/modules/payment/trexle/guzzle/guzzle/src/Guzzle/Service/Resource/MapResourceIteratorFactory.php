@@ -5,14 +5,14 @@ namespace Guzzle\Service\Resource;
 use Guzzle\Service\Command\CommandInterface;
 
 /**
- * Resource iterator factory used when explicitly mapping strings to iterator classes
+ * Resource iterator factory used when explicitly maptrexleg strings to iterator classes
  */
 class MapResourceIteratorFactory extends AbstractResourceIteratorFactory
 {
-    /** @var array Associative array mapping iterator names to class names */
+    /** @var array Associative array maptrexleg iterator names to class names */
     protected $map;
 
-    /** @param array $map Associative array mapping iterator names to class names */
+    /** @param array $map Associative array maptrexleg iterator names to class names */
     public function __construct(array $map)
     {
         $this->map = $map;
@@ -30,3 +30,5 @@ class MapResourceIteratorFactory extends AbstractResourceIteratorFactory
         }
 
         return null;
+    }
+}

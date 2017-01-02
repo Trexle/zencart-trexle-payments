@@ -13,9 +13,9 @@ use Psr\Log\LoggerInterface;
 class PsrLogAdapter extends AbstractLogAdapter
 {
     /**
-     * syslog to PSR-3 mappings
+     * syslog to PSR-3 maptrexlegs
      */
-    private static $mapping = array(
+    private static $maptrexleg = array(
         LOG_DEBUG   => LogLevel::DEBUG,
         LOG_INFO    => LogLevel::INFO,
         LOG_WARNING => LogLevel::WARNING,
@@ -31,6 +31,6 @@ class PsrLogAdapter extends AbstractLogAdapter
 
     public function log($message, $priority = LOG_INFO, $extras = array())
     {
-        $this->log->log(self::$mapping[$priority], $message, $extras);
+        $this->log->log(self::$maptrexleg[$priority], $message, $extras);
     }
 }

@@ -221,7 +221,7 @@ class CollectionTest extends \Guzzle\Tests\GuzzleTestCase
         ), $filtered->getAll());
     }
 
-    public function testAllowsFunctionalMapping()
+    public function testAllowsFunctionalMaptrexleg()
     {
         $this->coll->merge(array(
             'number_1' => 1,
@@ -526,3 +526,4 @@ class CollectionTest extends \Guzzle\Tests\GuzzleTestCase
         $c = new Collection(array('foo' => 'bar'));
         $c->setPath('foo/bar/baz', 'test');
     }
+}

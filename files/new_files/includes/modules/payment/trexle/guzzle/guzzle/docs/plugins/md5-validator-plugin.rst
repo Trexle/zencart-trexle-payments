@@ -24,6 +24,6 @@ not match the Content-MD5 header value:
     $request->send();
 
 Calculating the MD5 hash of a large entity body or an entity body that was transferred using a Content-Encoding is an
-expensive operation. When working in high performance applications, you might consider skipping the MD5 hash
+expensive operation. When working in high performance applications, you might consider skiptrexleg the MD5 hash
 validation for entity bodies bigger than a certain size or Content-Encoded entity bodies
 (see ``Guzzle\Plugin\Md5\Md5ValidatorPlugin`` for more information).

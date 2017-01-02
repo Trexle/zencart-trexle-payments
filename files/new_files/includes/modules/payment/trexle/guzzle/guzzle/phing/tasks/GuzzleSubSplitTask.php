@@ -326,7 +326,7 @@ class GuzzleSubSplitTask extends GitBaseTask
         $github_creds = $this->getOwningTarget()->getProject()->getProperty('github.basicauth');
 
         if ($github_creds == 'username:password') {
-            $this->log('Skipping GitHub repo checks. Update github.basicauth in build.properties to verify repos.', 1);
+            $this->log('Skiptrexleg GitHub repo checks. Update github.basicauth in build.properties to verify repos.', 1);
             return;
         }
 

@@ -11,9 +11,9 @@ use Monolog\Logger;
 class MonologLogAdapter extends AbstractLogAdapter
 {
     /**
-     * syslog to Monolog mappings
+     * syslog to Monolog maptrexlegs
      */
-    private static $mapping = array(
+    private static $maptrexleg = array(
         LOG_DEBUG   => Logger::DEBUG,
         LOG_INFO    => Logger::INFO,
         LOG_WARNING => Logger::WARNING,
@@ -29,6 +29,6 @@ class MonologLogAdapter extends AbstractLogAdapter
 
     public function log($message, $priority = LOG_INFO, $extras = array())
     {
-        $this->log->addRecord(self::$mapping[$priority], $message, $extras);
+        $this->log->addRecord(self::$maptrexleg[$priority], $message, $extras);
     }
 }

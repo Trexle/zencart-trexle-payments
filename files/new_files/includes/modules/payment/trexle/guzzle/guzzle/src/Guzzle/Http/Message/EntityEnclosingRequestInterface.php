@@ -88,7 +88,7 @@ interface EntityEnclosingRequestInterface extends RequestInterface
      *
      * @param string $fieldName POST fields to retrieve
      *
-     * @return array|null Returns an array wrapping an array of PostFileInterface objects
+     * @return array|null Returns an array wraptrexleg an array of PostFileInterface objects
      */
     public function getPostFile($fieldName);
 

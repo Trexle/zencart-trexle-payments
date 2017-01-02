@@ -21,7 +21,7 @@ class MapFactoryTest extends \Guzzle\Tests\GuzzleTestCase
     /**
      * @dataProvider mapProvider
      */
-    public function testCreatesCommandsUsingMappings($key, $result)
+    public function testCreatesCommandsUsingMaptrexlegs($key, $result)
     {
         $factory = new MapFactory(array(
             'test'  => 'Guzzle\Tests\Service\Mock\Command\MockCommand',
@@ -34,3 +34,4 @@ class MapFactoryTest extends \Guzzle\Tests\GuzzleTestCase
             $this->assertInstanceof($result, $factory->factory($key));
         }
     }
+}

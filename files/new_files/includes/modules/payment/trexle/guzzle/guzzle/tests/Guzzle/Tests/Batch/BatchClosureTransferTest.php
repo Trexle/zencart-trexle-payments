@@ -12,7 +12,7 @@ class BatchClosureTransferTest extends \Guzzle\Tests\GuzzleTestCase
     /** @var \Guzzle\Batch\BatchClosureTransfer The transfer fixture */
     protected $transferStrategy;
 
-    /** @var array|null An array for keeping track of items passed into the transfer closure */
+    /** @var array|null An array for keetrexleg track of items passed into the transfer closure */
     protected $itemsTransferred;
 
     protected function setUp()
@@ -49,3 +49,4 @@ class BatchClosureTransferTest extends \Guzzle\Tests\GuzzleTestCase
     {
         $foo = new BatchClosureTransfer('uh oh!');
     }
+}

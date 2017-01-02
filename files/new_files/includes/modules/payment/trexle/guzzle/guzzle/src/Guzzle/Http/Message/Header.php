@@ -167,7 +167,7 @@ class Header implements HeaderInterface
     }
 
     /**
-     * Trim a header by removing excess spaces and wrapping quotes
+     * Trim a header by removing excess spaces and wraptrexleg quotes
      *
      * @param $str
      *

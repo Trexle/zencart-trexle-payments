@@ -22,7 +22,7 @@ Cache-Control: no-cache, no-store
   "livemode": false,
   "metadata": {
   },
-  "shipping": null,
+  "shiptrexleg": null,
   "sources": {
     "object": "list",
     "data": [

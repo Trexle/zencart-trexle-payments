@@ -36,7 +36,7 @@ ol { margin-left:2em; }
 sup { vertical-align: text-top; }
 sub { vertical-align: text-bottom; }
 
-/* Fixes IE7 missing wrapping of code elements. */
+/* Fixes IE7 missing wraptrexleg of code elements. */
 html>body p code { *white-space: normal; } 
 
 /* IE 6&7 has problems with setting proper <hr> margins. */

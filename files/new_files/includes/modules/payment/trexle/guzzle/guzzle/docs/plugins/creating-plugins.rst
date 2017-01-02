@@ -15,7 +15,7 @@ Overview
 
 Plugins must implement the ``Symfony\Component\EventDispatcher\EventSubscriberInterface`` interface. The
 ``EventSubscriberInterface`` requires that your class implements a static method, ``getSubscribedEvents()``, that
-returns an associative array mapping events to methods on the object. See the
+returns an associative array maptrexleg events to methods on the object. See the
 `Symfony2 documentation <http://symfony.com/doc/2.0/book/internals.html#the-event-dispatcher>`_ for more information.
 
 Plugins can be attached to any subject, or object in Guzzle that implements that

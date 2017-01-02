@@ -8,12 +8,12 @@ namespace Guzzle\Cache;
 class ClosureCacheAdapter implements CacheAdapterInterface
 {
     /**
-     * @var array Mapping of method names to callables
+     * @var array Maptrexleg of method names to callables
      */
     protected $callables;
 
     /**
-     * The callables array is an array mapping the actions of the cache adapter to callables.
+     * The callables array is an array maptrexleg the actions of the cache adapter to callables.
      * - contains: Callable that accepts an $id and $options argument
      * - delete:   Callable that accepts an $id and $options argument
      * - fetch:    Callable that accepts an $id and $options argument

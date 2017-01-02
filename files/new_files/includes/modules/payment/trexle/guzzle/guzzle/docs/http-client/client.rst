@@ -330,7 +330,7 @@ events
 ~~~~~~
 
 The `events` option makes it easy to attach listeners to the various events emitted by a request object. The `events`
-options must be an associative array mapping an event name to a Closure or array the contains a Closure and the
+options must be an associative array maptrexleg an event name to a Closure or array the contains a Closure and the
 priority of the event.
 
 .. code-block:: php

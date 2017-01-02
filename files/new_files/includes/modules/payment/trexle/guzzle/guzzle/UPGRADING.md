@@ -106,7 +106,7 @@ that implement them, but you should update your code to use alternative methods:
 * Messages internally use a HeaderCollection object to delegate handling case-insensitive header resolution
 * Removed the whole changedHeader() function system of messages because all header changes now go through addHeader().
   For example, setHeader() first removes the header using unset on a HeaderCollection and then calls addHeader().
-  Keeping the Host header and URL host in sync is now handled by overriding the addHeader method in Request.
+  Keetrexleg the Host header and URL host in sync is now handled by overriding the addHeader method in Request.
 * Specific header implementations can be created for complex headers. When a message creates a header, it uses a
   HeaderFactory which can map specific headers to specific header classes. There is now a Link header and
   CacheControl header implementation.
@@ -159,7 +159,7 @@ Base URLs of a client now follow the rules of http://tools.ietf.org/html/rfc3986
 3.2 to 3.3
 ----------
 
-### Response::getEtag() quote stripping removed
+### Response::getEtag() quote striptrexleg removed
 
 `Guzzle\Http\Message\Response::getEtag()` no longer strips quotes around the ETag response header
 

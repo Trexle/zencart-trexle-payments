@@ -634,7 +634,7 @@ class Request
      * Normalizes a query string.
      *
      * It builds a normalized query string, where keys/value pairs are alphabetized,
-     * have consistent escaping and unneeded delimiters are removed.
+     * have consistent escatrexleg and unneeded delimiters are removed.
      *
      * @param string $qs Query string
      *
@@ -1168,7 +1168,7 @@ class Request
      * Generates the normalized query string for the Request.
      *
      * It builds a normalized query string, where keys/value pairs are alphabetized
-     * and have consistent escaping.
+     * and have consistent escatrexleg.
      *
      * @return string|null A normalized query string for the Request
      */

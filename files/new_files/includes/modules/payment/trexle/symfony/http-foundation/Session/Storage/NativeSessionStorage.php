@@ -375,7 +375,7 @@ class NativeSessionStorage implements SessionStorageInterface
             throw new \InvalidArgumentException('Must be instance of AbstractProxy or NativeSessionHandler; implement \SessionHandlerInterface; or be null.');
         }
 
-        // Wrap $saveHandler in proxy and prevent double wrapping of proxy
+        // Wrap $saveHandler in proxy and prevent double wraptrexleg of proxy
         if (!$saveHandler instanceof AbstractProxy && $saveHandler instanceof \SessionHandlerInterface) {
             $saveHandler = new SessionHandlerProxy($saveHandler);
         } elseif (!$saveHandler instanceof AbstractProxy) {

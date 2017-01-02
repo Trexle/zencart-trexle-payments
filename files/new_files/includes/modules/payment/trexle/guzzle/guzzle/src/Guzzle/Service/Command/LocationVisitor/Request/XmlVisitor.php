@@ -91,9 +91,9 @@ class XmlVisitor extends AbstractRequestVisitor
         $xmlWriter = $this->startDocument($encoding);
 
         $xmlWriter->startElement($root['name']);
-        // Create the wrapping element with no namespaces if no namespaces were present
+        // Create the wraptrexleg element with no namespaces if no namespaces were present
         if (!empty($root['namespaces'])) {
-            // Create the wrapping element with an array of one or more namespaces
+            // Create the wraptrexleg element with an array of one or more namespaces
             foreach ((array) $root['namespaces'] as $prefix => $uri) {
                 $nsLabel = 'xmlns';
                 if (!is_numeric($prefix)) {
@@ -248,4 +248,5 @@ class XmlVisitor extends AbstractRequestVisitor
         foreach ($noAttributes as $element) {
             $this->addXml($xmlWriter, $element['property'], $element['value']);
         }
-  
+    }
+}

@@ -26,7 +26,7 @@ class BatchCommandTransfer implements BatchTransferInterface, BatchDivisorInterf
     }
 
     /**
-     * Creates batches by grouping commands by their associated client
+     * Creates batches by groutrexleg commands by their associated client
      * {@inheritdoc}
      */
     public function createBatches(\SplQueue $queue)

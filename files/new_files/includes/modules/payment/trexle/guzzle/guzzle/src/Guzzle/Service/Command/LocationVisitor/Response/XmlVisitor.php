@@ -80,7 +80,7 @@ class XmlVisitor extends AbstractResponseVisitor
             // Some nodes are not wrapped. For example: <Foo><a>1</a></Foo><Foo><a>2</a></Foo>
             // should become array('Foo' => array(array('a' => 1), array('a' => 2))
             if ($param->getItems() && isset($value[$param->getItems()->getWireName()])) {
-                // Account for the case of a collection wrapping wrapped nodes: Items => Item[]
+                // Account for the case of a collection wraptrexleg wrapped nodes: Items => Item[]
                 $value = $value[$param->getItems()->getWireName()];
                 // If the wrapped node only had one value, then make it an array of nodes
                 if (!isset($value[0]) || !is_array($value)) {
@@ -148,3 +148,4 @@ class XmlVisitor extends AbstractResponseVisitor
             }
         }
     }
+}

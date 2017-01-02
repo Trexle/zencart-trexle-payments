@@ -70,19 +70,19 @@ use Symfony\Component\HttpFoundation\ParameterBag;
  * * billingCountry
  * * billingPhone
  * * billingFax
- * * shippingTitle
- * * shippingName
- * * shippingFirstName
- * * shippingLastName
- * * shippingCompany
- * * shippingAddress1
- * * shippingAddress2
- * * shippingCity
- * * shippingPostcode
- * * shippingState
- * * shippingCountry
- * * shippingPhone
- * * shippingFax
+ * * shiptrexlegTitle
+ * * shiptrexlegName
+ * * shiptrexlegFirstName
+ * * shiptrexlegLastName
+ * * shiptrexlegCompany
+ * * shiptrexlegAddress1
+ * * shiptrexlegAddress2
+ * * shiptrexlegCity
+ * * shiptrexlegPostcode
+ * * shiptrexlegState
+ * * shiptrexlegCountry
+ * * shiptrexlegPhone
+ * * shiptrexlegFax
  * * email
  * * birthday
  * * gender
@@ -273,7 +273,7 @@ class CreditCard
     public function setTitle($value)
     {
         $this->setBillingTitle($value);
-        $this->setShippingTitle($value);
+        $this->setShiptrexlegTitle($value);
 
         return $this;
     }
@@ -289,7 +289,7 @@ class CreditCard
     }
 
     /**
-     * Set Card First Name (Billing and Shipping).
+     * Set Card First Name (Billing and Shiptrexleg).
      *
      * @param string $value Parameter value
      * @return CreditCard provides a fluent interface.
@@ -297,7 +297,7 @@ class CreditCard
     public function setFirstName($value)
     {
         $this->setBillingFirstName($value);
-        $this->setShippingFirstName($value);
+        $this->setShiptrexlegFirstName($value);
 
         return $this;
     }
@@ -313,7 +313,7 @@ class CreditCard
     }
 
     /**
-     * Set Card Last Name (Billing and Shipping).
+     * Set Card Last Name (Billing and Shiptrexleg).
      *
      * @param string $value Parameter value
      * @return CreditCard provides a fluent interface.
@@ -321,7 +321,7 @@ class CreditCard
     public function setLastName($value)
     {
         $this->setBillingLastName($value);
-        $this->setShippingLastName($value);
+        $this->setShiptrexlegLastName($value);
 
         return $this;
     }
@@ -337,7 +337,7 @@ class CreditCard
     }
 
     /**
-     * Set Card Name (Billing and Shipping).
+     * Set Card Name (Billing and Shiptrexleg).
      *
      * @param string $value Parameter value
      * @return CreditCard provides a fluent interface.
@@ -345,7 +345,7 @@ class CreditCard
     public function setName($value)
     {
         $this->setBillingName($value);
-        $this->setShippingName($value);
+        $this->setShiptrexlegName($value);
 
         return $this;
     }
@@ -842,280 +842,280 @@ class CreditCard
     }
 
     /**
-     * Get the title of the card shipping name.
+     * Get the title of the card shiptrexleg name.
      *
      * @return string
      */
-    public function getShippingTitle()
+    public function getShiptrexlegTitle()
     {
-        return $this->getParameter('shippingTitle');
+        return $this->getParameter('shiptrexlegTitle');
     }
 
     /**
-     * Sets the title of the card shipping name.
+     * Sets the title of the card shiptrexleg name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingTitle($value)
+    public function setShiptrexlegTitle($value)
     {
-        return $this->setParameter('shippingTitle', $value);
+        return $this->setParameter('shiptrexlegTitle', $value);
     }
 
     /**
-     * Get the card shipping name.
+     * Get the card shiptrexleg name.
      *
      * @return string
      */
-    public function getShippingName()
+    public function getShiptrexlegName()
     {
-        return trim($this->getShippingFirstName() . ' ' . $this->getShippingLastName());
+        return trim($this->getShiptrexlegFirstName() . ' ' . $this->getShiptrexlegLastName());
     }
 
     /**
-     * Sets the card shipping name.
+     * Sets the card shiptrexleg name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingName($value)
+    public function setShiptrexlegName($value)
     {
         $names = explode(' ', $value, 2);
-        $this->setShippingFirstName($names[0]);
-        $this->setShippingLastName(isset($names[1]) ? $names[1] : null);
+        $this->setShiptrexlegFirstName($names[0]);
+        $this->setShiptrexlegLastName(isset($names[1]) ? $names[1] : null);
 
         return $this;
     }
 
     /**
-     * Get the first part of the card shipping name.
+     * Get the first part of the card shiptrexleg name.
      *
      * @return string
      */
-    public function getShippingFirstName()
+    public function getShiptrexlegFirstName()
     {
-        return $this->getParameter('shippingFirstName');
+        return $this->getParameter('shiptrexlegFirstName');
     }
 
     /**
-     * Sets the first part of the card shipping name.
+     * Sets the first part of the card shiptrexleg name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingFirstName($value)
+    public function setShiptrexlegFirstName($value)
     {
-        return $this->setParameter('shippingFirstName', $value);
+        return $this->setParameter('shiptrexlegFirstName', $value);
     }
 
     /**
-     * Get the last part of the card shipping name.
+     * Get the last part of the card shiptrexleg name.
      *
      * @return string
      */
-    public function getShippingLastName()
+    public function getShiptrexlegLastName()
     {
-        return $this->getParameter('shippingLastName');
+        return $this->getParameter('shiptrexlegLastName');
     }
 
     /**
-     * Sets the last part of the card shipping name.
+     * Sets the last part of the card shiptrexleg name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingLastName($value)
+    public function setShiptrexlegLastName($value)
     {
-        return $this->setParameter('shippingLastName', $value);
+        return $this->setParameter('shiptrexlegLastName', $value);
     }
 
     /**
-     * Get the shipping company name.
+     * Get the shiptrexleg company name.
      *
      * @return string
      */
-    public function getShippingCompany()
+    public function getShiptrexlegCompany()
     {
-        return $this->getParameter('shippingCompany');
+        return $this->getParameter('shiptrexlegCompany');
     }
 
     /**
-     * Sets the shipping company name.
+     * Sets the shiptrexleg company name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingCompany($value)
+    public function setShiptrexlegCompany($value)
     {
-        return $this->setParameter('shippingCompany', $value);
+        return $this->setParameter('shiptrexlegCompany', $value);
     }
 
     /**
-     * Get the shipping address, line 1.
+     * Get the shiptrexleg address, line 1.
      *
      * @return string
      */
-    public function getShippingAddress1()
+    public function getShiptrexlegAddress1()
     {
-        return $this->getParameter('shippingAddress1');
+        return $this->getParameter('shiptrexlegAddress1');
     }
 
     /**
-     * Sets the shipping address, line 1.
+     * Sets the shiptrexleg address, line 1.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingAddress1($value)
+    public function setShiptrexlegAddress1($value)
     {
-        return $this->setParameter('shippingAddress1', $value);
+        return $this->setParameter('shiptrexlegAddress1', $value);
     }
 
     /**
-     * Get the shipping address, line 2.
+     * Get the shiptrexleg address, line 2.
      *
      * @return string
      */
-    public function getShippingAddress2()
+    public function getShiptrexlegAddress2()
     {
-        return $this->getParameter('shippingAddress2');
+        return $this->getParameter('shiptrexlegAddress2');
     }
 
     /**
-     * Sets the shipping address, line 2.
+     * Sets the shiptrexleg address, line 2.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingAddress2($value)
+    public function setShiptrexlegAddress2($value)
     {
-        return $this->setParameter('shippingAddress2', $value);
+        return $this->setParameter('shiptrexlegAddress2', $value);
     }
 
     /**
-     * Get the shipping city.
+     * Get the shiptrexleg city.
      *
      * @return string
      */
-    public function getShippingCity()
+    public function getShiptrexlegCity()
     {
-        return $this->getParameter('shippingCity');
+        return $this->getParameter('shiptrexlegCity');
     }
 
     /**
-     * Sets the shipping city.
+     * Sets the shiptrexleg city.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingCity($value)
+    public function setShiptrexlegCity($value)
     {
-        return $this->setParameter('shippingCity', $value);
+        return $this->setParameter('shiptrexlegCity', $value);
     }
 
     /**
-     * Get the shipping postcode.
+     * Get the shiptrexleg postcode.
      *
      * @return string
      */
-    public function getShippingPostcode()
+    public function getShiptrexlegPostcode()
     {
-        return $this->getParameter('shippingPostcode');
+        return $this->getParameter('shiptrexlegPostcode');
     }
 
     /**
-     * Sets the shipping postcode.
+     * Sets the shiptrexleg postcode.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingPostcode($value)
+    public function setShiptrexlegPostcode($value)
     {
-        return $this->setParameter('shippingPostcode', $value);
+        return $this->setParameter('shiptrexlegPostcode', $value);
     }
 
     /**
-     * Get the shipping state.
+     * Get the shiptrexleg state.
      *
      * @return string
      */
-    public function getShippingState()
+    public function getShiptrexlegState()
     {
-        return $this->getParameter('shippingState');
+        return $this->getParameter('shiptrexlegState');
     }
 
     /**
-     * Sets the shipping state.
+     * Sets the shiptrexleg state.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingState($value)
+    public function setShiptrexlegState($value)
     {
-        return $this->setParameter('shippingState', $value);
+        return $this->setParameter('shiptrexlegState', $value);
     }
 
     /**
-     * Get the shipping country.
+     * Get the shiptrexleg country.
      *
      * @return string
      */
-    public function getShippingCountry()
+    public function getShiptrexlegCountry()
     {
-        return $this->getParameter('shippingCountry');
+        return $this->getParameter('shiptrexlegCountry');
     }
 
     /**
-     * Sets the shipping country.
+     * Sets the shiptrexleg country.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingCountry($value)
+    public function setShiptrexlegCountry($value)
     {
-        return $this->setParameter('shippingCountry', $value);
+        return $this->setParameter('shiptrexlegCountry', $value);
     }
 
     /**
-     * Get the shipping phone number.
+     * Get the shiptrexleg phone number.
      *
      * @return string
      */
-    public function getShippingPhone()
+    public function getShiptrexlegPhone()
     {
-        return $this->getParameter('shippingPhone');
+        return $this->getParameter('shiptrexlegPhone');
     }
 
     /**
-     * Sets the shipping phone number.
+     * Sets the shiptrexleg phone number.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingPhone($value)
+    public function setShiptrexlegPhone($value)
     {
-        return $this->setParameter('shippingPhone', $value);
+        return $this->setParameter('shiptrexlegPhone', $value);
     }
 
     /**
-     * Get the shipping fax number.
+     * Get the shiptrexleg fax number.
      *
      * @return string
      */
-    public function getShippingFax()
+    public function getShiptrexlegFax()
     {
-        return $this->getParameter('shippingFax');
+        return $this->getParameter('shiptrexlegFax');
     }
 
     /**
-     * Sets the shipping fax number.
+     * Sets the shiptrexleg fax number.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
      */
-    public function setShippingFax($value)
+    public function setShiptrexlegFax($value)
     {
-        return $this->setParameter('shippingFax', $value);
+        return $this->setParameter('shiptrexlegFax', $value);
     }
 
     /**
@@ -1129,7 +1129,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping address, line 1.
+     * Sets the billing and shiptrexleg address, line 1.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1137,7 +1137,7 @@ class CreditCard
     public function setAddress1($value)
     {
         $this->setParameter('billingAddress1', $value);
-        $this->setParameter('shippingAddress1', $value);
+        $this->setParameter('shiptrexlegAddress1', $value);
 
         return $this;
     }
@@ -1153,7 +1153,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping address, line 2.
+     * Sets the billing and shiptrexleg address, line 2.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1161,7 +1161,7 @@ class CreditCard
     public function setAddress2($value)
     {
         $this->setParameter('billingAddress2', $value);
-        $this->setParameter('shippingAddress2', $value);
+        $this->setParameter('shiptrexlegAddress2', $value);
 
         return $this;
     }
@@ -1177,7 +1177,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping city.
+     * Sets the billing and shiptrexleg city.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1185,7 +1185,7 @@ class CreditCard
     public function setCity($value)
     {
         $this->setParameter('billingCity', $value);
-        $this->setParameter('shippingCity', $value);
+        $this->setParameter('shiptrexlegCity', $value);
 
         return $this;
     }
@@ -1201,7 +1201,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping postcode.
+     * Sets the billing and shiptrexleg postcode.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1209,7 +1209,7 @@ class CreditCard
     public function setPostcode($value)
     {
         $this->setParameter('billingPostcode', $value);
-        $this->setParameter('shippingPostcode', $value);
+        $this->setParameter('shiptrexlegPostcode', $value);
 
         return $this;
     }
@@ -1225,7 +1225,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping state.
+     * Sets the billing and shiptrexleg state.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1233,7 +1233,7 @@ class CreditCard
     public function setState($value)
     {
         $this->setParameter('billingState', $value);
-        $this->setParameter('shippingState', $value);
+        $this->setParameter('shiptrexlegState', $value);
 
         return $this;
     }
@@ -1249,7 +1249,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping country.
+     * Sets the billing and shiptrexleg country.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1257,7 +1257,7 @@ class CreditCard
     public function setCountry($value)
     {
         $this->setParameter('billingCountry', $value);
-        $this->setParameter('shippingCountry', $value);
+        $this->setParameter('shiptrexlegCountry', $value);
 
         return $this;
     }
@@ -1273,7 +1273,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping phone number.
+     * Sets the billing and shiptrexleg phone number.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1281,7 +1281,7 @@ class CreditCard
     public function setPhone($value)
     {
         $this->setParameter('billingPhone', $value);
-        $this->setParameter('shippingPhone', $value);
+        $this->setParameter('shiptrexlegPhone', $value);
 
         return $this;
     }
@@ -1297,7 +1297,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping fax number.
+     * Sets the billing and shiptrexleg fax number.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1305,7 +1305,7 @@ class CreditCard
     public function setFax($value)
     {
         $this->setParameter('billingFax', $value);
-        $this->setParameter('shippingFax', $value);
+        $this->setParameter('shiptrexlegFax', $value);
 
         return $this;
     }
@@ -1321,7 +1321,7 @@ class CreditCard
     }
 
     /**
-     * Sets the billing and shipping company name.
+     * Sets the billing and shiptrexleg company name.
      *
      * @param string $value
      * @return CreditCard provides a fluent interface.
@@ -1329,7 +1329,7 @@ class CreditCard
     public function setCompany($value)
     {
         $this->setParameter('billingCompany', $value);
-        $this->setParameter('shippingCompany', $value);
+        $this->setParameter('shiptrexlegCompany', $value);
 
         return $this;
     }
@@ -1402,4 +1402,6 @@ class CreditCard
      */
     public function setGender($value)
     {
-        return $this->setParameter(
+        return $this->setParameter('gender', $value);
+    }
+}

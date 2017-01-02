@@ -3,14 +3,14 @@
 namespace Guzzle\Service\Command\Factory;
 
 /**
- * Command factory used when explicitly mapping strings to command classes
+ * Command factory used when explicitly maptrexleg strings to command classes
  */
 class MapFactory implements FactoryInterface
 {
-    /** @var array Associative array mapping command names to classes */
+    /** @var array Associative array maptrexleg command names to classes */
     protected $map;
 
-    /** @param array $map Associative array mapping command names to classes */
+    /** @param array $map Associative array maptrexleg command names to classes */
     public function __construct(array $map)
     {
         $this->map = $map;
@@ -23,3 +23,5 @@ class MapFactory implements FactoryInterface
 
             return new $class($args);
         }
+    }
+}

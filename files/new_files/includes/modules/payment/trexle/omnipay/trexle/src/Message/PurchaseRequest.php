@@ -53,7 +53,7 @@ namespace Omnipay\Trexle\Message;
  *
  * // Create a credit card object
  * // This card can be used for testing.
- * // See https://trexle.net.au/docs/api/test-cards for a list of card
+ * // See https://docs.trexle.comtest-cards for a list of card
  * // numbers that can be used for testing.
  * $card = new CreditCard(array(
  *             'firstName'    => 'Example',
@@ -87,7 +87,7 @@ namespace Omnipay\Trexle\Message;
  * </code>
  *
  * @see \Omnipay\Trexle\Gateway
- * @link https://trexle.net.au/docs/api/charges
+ * @link https://docs.trexle.comcharges
  */
 class PurchaseRequest extends AbstractRequest
 {

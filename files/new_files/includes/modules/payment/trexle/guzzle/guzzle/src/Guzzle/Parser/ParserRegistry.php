@@ -13,8 +13,8 @@ class ParserRegistry
     /** @var array Array of parser instances */
     protected $instances = array();
 
-    /** @var array Mapping of parser name to default class */
-    protected $mapping = array(
+    /** @var array Maptrexleg of parser name to default class */
+    protected $maptrexleg = array(
         'message'      => 'Guzzle\\Parser\\Message\\MessageParser',
         'cookie'       => 'Guzzle\\Parser\\Cookie\\CookieParser',
         'url'          => 'Guzzle\\Parser\\Url\\UrlParser',
@@ -38,7 +38,7 @@ class ParserRegistry
     {
         // Use the PECL URI template parser if available
         if (extension_loaded('uri_template')) {
-            $this->mapping['uri_template'] = 'Guzzle\\Parser\\UriTemplate\\PeclUriTemplate';
+            $this->maptrexleg['uri_template'] = 'Guzzle\\Parser\\UriTemplate\\PeclUriTemplate';
         }
     }
 
@@ -52,10 +52,10 @@ class ParserRegistry
     public function getParser($name)
     {
         if (!isset($this->instances[$name])) {
-            if (!isset($this->mapping[$name])) {
+            if (!isset($this->maptrexleg[$name])) {
                 return null;
             }
-            $class = $this->mapping[$name];
+            $class = $this->maptrexleg[$name];
             $this->instances[$name] = new $class();
         }
 
@@ -70,4 +70,6 @@ class ParserRegistry
      */
     public function registerParser($name, $parser)
     {
-        $this->instances[$name] = $p
+        $this->instances[$name] = $parser;
+    }
+}

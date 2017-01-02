@@ -24,7 +24,7 @@ class CurlMulti extends AbstractHasDispatcher implements CurlMultiInterface
     /** @var \SplObjectStorage RequestInterface to CurlHandle hash */
     protected $handles;
 
-    /** @var array Hash mapping curl handle resource IDs to request objects */
+    /** @var array Hash maptrexleg curl handle resource IDs to request objects */
     protected $resourceHash;
 
     /** @var array Queued exceptions */

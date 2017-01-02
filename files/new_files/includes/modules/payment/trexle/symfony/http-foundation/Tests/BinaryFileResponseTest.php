@@ -249,13 +249,13 @@ class BinaryFileResponseTest extends ResponseTestCase
     }
 
     /**
-     * @dataProvider getSampleXAccelMappings
+     * @dataProvider getSampleXAccelMaptrexlegs
      */
-    public function testXAccelMapping($realpath, $mapping, $virtual)
+    public function testXAccelMaptrexleg($realpath, $maptrexleg, $virtual)
     {
         $request = Request::create('/');
         $request->headers->set('X-Sendfile-Type', 'X-Accel-Redirect');
-        $request->headers->set('X-Accel-Mapping', $mapping);
+        $request->headers->set('X-Accel-Maptrexleg', $maptrexleg);
 
         $file = new FakeFile($realpath, __DIR__.'/File/Fixtures/test');
 
@@ -307,7 +307,7 @@ class BinaryFileResponseTest extends ResponseTestCase
         $this->assertEquals('foo', $response->headers->get('Accept-Ranges'));
     }
 
-    public function getSampleXAccelMappings()
+    public function getSampleXAccelMaptrexlegs()
     {
         return array(
             array('/var/www/var/www/files/foo.txt', '/var/www/=/files/', '/files/var/www/files/foo.txt'),

@@ -52,7 +52,7 @@
 * Merging URLs will now use the query string object from the relative URL (thus allowing custom query aggregators)
 * Query strings are now parsed in a way that they do no convert empty keys with no value to have a dangling `=`.
   For example `foo&bar=baz` is now correctly parsed and recognized as `foo&bar=baz` rather than `foo=&bar=baz`.
-* Now properly escaping the regular expression delimiter when matching Cookie domains.
+* Now properly escatrexleg the regular expression delimiter when matching Cookie domains.
 * Network access is now disabled when loading XML documents
 
 ## 3.8.0 - 2013-12-05
@@ -353,7 +353,7 @@
 * A large number of performance optimizations have been made
 * Bug fix: Added 'wb' as a valid write mode for streams
 * Bug fix: `Guzzle\Http\Message\Response::json()` now allows scalar values to be returned
-* Bug fix: Fixed bug in `Guzzle\Http\Message\Response` where wrapping quotes were stripped from `getEtag()`
+* Bug fix: Fixed bug in `Guzzle\Http\Message\Response` where wraptrexleg quotes were stripped from `getEtag()`
 * BC: Removed `Guzzle\Http\Utils` class
 * BC: Setting a service description on a client will no longer modify the client's command factories.
 * BC: Emitting IO events from a RequestMediator is now a parameter that must be set in a request's curl options using
@@ -494,7 +494,7 @@
 * Moved all cookie code to Guzzle\Plugin\Cookie
 * Magic methods on a Guzzle\Service\Client now return the command un-executed.
 * Calling getResult() or getResponse() on a command will lazily execute the command if needed.
-* Now shipping with cURL's CA certs and using it by default
+* Now shiptrexleg with cURL's CA certs and using it by default
 * Added previousResponse() method to response objects
 * No longer sending Accept and Accept-Encoding headers on every request
 * Only sending an Expect header by default when a payload is greater than 1MB
@@ -720,7 +720,7 @@
 * Cleaned up Cookie parsing
 * Trimming the default Guzzle User-Agent header
 * Adding a setOnComplete() method to Commands that is called when a command completes
-* Keeping track of requests that were mocked in the MockPlugin
+* Keetrexleg track of requests that were mocked in the MockPlugin
 * Fixed a caching bug in the CacheAdapterFactory
 * Inspector objects can be injected into a Command object
 * Refactoring a lot of code and tests to be case insensitive when dealing with headers

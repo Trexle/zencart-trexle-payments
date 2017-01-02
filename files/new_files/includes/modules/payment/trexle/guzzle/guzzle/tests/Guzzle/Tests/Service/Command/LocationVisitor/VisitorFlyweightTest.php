@@ -11,17 +11,17 @@ use Guzzle\Service\Command\LocationVisitor\Response\JsonVisitor as JsonResponseV
  */
 class VisitorFlyweightTest extends \Guzzle\Tests\GuzzleTestCase
 {
-    public function testUsesDefaultMappingsWithGetInstance()
+    public function testUsesDefaultMaptrexlegsWithGetInstance()
     {
         $f = VisitorFlyweight::getInstance();
         $this->assertInstanceOf('Guzzle\Service\Command\LocationVisitor\Request\JsonVisitor', $f->getRequestVisitor('json'));
         $this->assertInstanceOf('Guzzle\Service\Command\LocationVisitor\Response\JsonVisitor', $f->getResponseVisitor('json'));
     }
 
-    public function testCanUseCustomMappings()
+    public function testCanUseCustomMaptrexlegs()
     {
         $f = new VisitorFlyweight(array());
-        $this->assertEquals(array(), $this->readAttribute($f, 'mappings'));
+        $this->assertEquals(array(), $this->readAttribute($f, 'maptrexlegs'));
     }
 
     /**
@@ -49,3 +49,5 @@ class VisitorFlyweightTest extends \Guzzle\Tests\GuzzleTestCase
         $f->addResponseVisitor('json', $j2);
         $this->assertSame($j1, $f->getRequestVisitor('json'));
         $this->assertSame($j2, $f->getResponseVisitor('json'));
+    }
+}

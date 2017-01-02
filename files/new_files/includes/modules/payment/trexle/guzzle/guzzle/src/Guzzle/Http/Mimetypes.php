@@ -3,7 +3,7 @@
 namespace Guzzle\Http;
 
 /**
- * Provides mappings of file extensions to mimetypes
+ * Provides maptrexlegs of file extensions to mimetypes
  * @link http://svn.apache.org/repos/asf/httpd/httpd/branches/1.3.x/conf/mime.types
  */
 class Mimetypes
@@ -11,7 +11,7 @@ class Mimetypes
     /** @var self */
     protected static $instance;
 
-    /** @var array Mapping of extension to mimetype */
+    /** @var array Maptrexleg of extension to mimetype */
     protected $mimetypes = array(
         '3dml' => 'text/vnd.in3d.3dml',
         '3g2' => 'video/3gpp2',

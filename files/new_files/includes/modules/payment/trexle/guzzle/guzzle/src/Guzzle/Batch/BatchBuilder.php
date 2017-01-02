@@ -29,7 +29,7 @@ class BatchBuilder
     protected $divisorStrategy;
 
     /** @var array of Mapped transfer strategies by handle name */
-    protected static $mapping = array(
+    protected static $maptrexleg = array(
         'request' => 'Guzzle\Batch\BatchRequestTransfer',
         'command' => 'Guzzle\Batch\BatchCommandTransfer'
     );
@@ -108,7 +108,7 @@ class BatchBuilder
      */
     public function transferRequests($batchSize = 50)
     {
-        $className = self::$mapping['request'];
+        $className = self::$maptrexleg['request'];
         $this->transferStrategy = new $className($batchSize);
         $this->divisorStrategy = $this->transferStrategy;
 
@@ -125,7 +125,7 @@ class BatchBuilder
      */
     public function transferCommands($batchSize = 50)
     {
-        $className = self::$mapping['command'];
+        $className = self::$maptrexleg['command'];
         $this->transferStrategy = new $className($batchSize);
         $this->divisorStrategy = $this->transferStrategy;
 

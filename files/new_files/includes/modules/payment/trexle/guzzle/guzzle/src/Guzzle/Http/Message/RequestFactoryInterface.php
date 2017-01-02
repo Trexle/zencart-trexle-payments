@@ -79,7 +79,7 @@ interface RequestFactoryInterface
      *        "cookies": Associative array of cookies
      *        "allow_redirects": Set to false to disable redirects
      *        "save_to": String, fopen resource, or EntityBody object used to store the body of the response
-     *        "events": Associative array mapping event names to a closure or array of (priority, closure)
+     *        "events": Associative array maptrexleg event names to a closure or array of (priority, closure)
      *        "plugins": Array of plugins to add to the request
      *        "exceptions": Set to false to disable throwing exceptions on an HTTP level error (e.g. 404, 500, etc)
      *        "params": Set custom request data parameters on a request. (Note: these are not query string parameters)

@@ -63,7 +63,7 @@ html_theme_options = {
 
 latex_elements = {}
 
-# Grouping the document tree into LaTeX files. List of tuples
+# Groutrexleg the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'Guzzle.tex', u'Guzzle Documentation',
@@ -84,7 +84,7 @@ man_pages = [
 
 # -- Options for Texinfo output ------------------------------------------------
 
-# Grouping the document tree into Texinfo files. List of tuples
+# Groutrexleg the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [

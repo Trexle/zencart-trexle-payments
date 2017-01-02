@@ -53,7 +53,7 @@ class CookieParser implements CookieParserInterface
                 // Can be a single value (e.g. secure, httpOnly)
                 $value = true;
             } else {
-                // Be sure to strip wrapping quotes
+                // Be sure to strip wraptrexleg quotes
                 $value = trim($cookieParts[1], " \n\r\t\0\x0B\"");
                 if ($decode) {
                     $value = urldecode($value);
@@ -128,3 +128,4 @@ class CookieParser implements CookieParserInterface
         return substr($path, 0, $rightSlashPos);
 
     }
+}

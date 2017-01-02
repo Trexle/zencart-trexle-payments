@@ -635,8 +635,11 @@ class trexle extends base {
         global $db, $messageStack;
         if ($order_time == '') $order_time = date("F j, Y, g:i a");
 
-        $this->form_action_url = 'https://core.trexle.com/api/v1';
-       
+        if (MODULE_PAYMENT_PIN_TESTMODE == 'Live' || !strstr(MODULE_PAYMENT_PIN_TESTMODE, 'Test')) {
+            $this->form_action_url = 'https://core.trexle.com/api/v1';
+        } else {
+            $this->form_action_url = 'https://test-core.trexle.com/api/v1';
+        }
         $response['url'] = $this->form_action_url;
 
         $this->reportable_submit_data = $submit_data;

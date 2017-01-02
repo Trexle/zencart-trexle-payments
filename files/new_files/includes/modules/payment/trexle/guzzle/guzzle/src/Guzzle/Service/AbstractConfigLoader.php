@@ -16,7 +16,7 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
     /** @var array Hash of previously loaded filenames */
     protected $loadedFiles = array();
 
-    /** @var array JSON error code mappings */
+    /** @var array JSON error code maptrexlegs */
     protected static $jsonErrors = array(
         JSON_ERROR_NONE => 'JSON_ERROR_NONE - No errors',
         JSON_ERROR_DEPTH => 'JSON_ERROR_DEPTH - Maximum stack depth exceeded',
@@ -174,3 +174,4 @@ abstract class AbstractConfigLoader implements ConfigLoaderInterface
     {
         return array_merge_recursive($a, $b);
     }
+}

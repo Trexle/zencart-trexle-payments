@@ -5,11 +5,7 @@
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  * @version GIT: $Id: Author: DrByte  Wed Nov 6 21:04:33 2013 -0500 Modified in v1.5.2 $
-<<<<<<< HEAD
  * MODIFIED for Trexle Payments by ZenExpert
-=======
- * MODIFIED for Pin Payments by ZenExpert
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
  */
 
   require('includes/application_top.php');
@@ -267,11 +263,7 @@
 
       case 'doRefund':
         $order = new order($oID);
-<<<<<<< HEAD
           // bof Trexle Payments
-=======
-          // bof Pin Payments
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
               if (isset($_POST['typeRefund'])){
                   if ($order->info['payment_module_code']) {
                       if (file_exists(DIR_FS_CATALOG_MODULES . 'payment/' . $order->info['payment_module_code'] . '.php')) {
@@ -295,11 +287,7 @@
               }
               else
               {
-<<<<<<< HEAD
                   // eof Trexle Payments
-=======
-                  // eof Pin Payments
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
 
                   if ($order->info['payment_module_code']) {
                       if (file_exists(DIR_FS_CATALOG_MODULES . 'payment/' . $order->info['payment_module_code'] . '.php')) {
@@ -311,15 +299,9 @@
                           }
                       }
                   }
-<<<<<<< HEAD
                   // bof Trexle Payments
               }
           // eof Trexle Payments
-=======
-                  // bof Pin Payments
-              }
-          // eof Pin Payments
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
         zen_record_admin_activity('Order ' . $oID . ' refund processed. See order comments for details.', 'info');
         zen_redirect(zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=edit', 'NONSSL'));
         break;
@@ -736,13 +718,8 @@ function couponpopupWindow(url) {
         </table></td>
       </form></tr>
 
-<<<<<<< HEAD
     <!-- do refund with trexle payments -->
       <?php if (zen_trexle_get_token_by_order(zen_db_input($oID))!='') { ?>
-=======
-    <!-- do refund with pin payments -->
-      <?php if (zen_pin_get_token_by_order(zen_db_input($oID))!='') { ?>
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
       <tr>
           <?php echo zen_draw_form('refund', FILENAME_ORDERS, zen_get_all_get_params(array('action')) . 'action=doRefund', 'post', '', true); ?>
       <td><table border="0" cellspacing="0" cellpadding="2" class="noprint">
@@ -768,11 +745,7 @@ function couponpopupWindow(url) {
           </tr>
         </table></td>
         <input type="hidden" name="typeRefund" />
-<<<<<<< HEAD
         <input type="hidden" name="akey" value="<?php echo zen_trexle_get_token_by_order(zen_db_input($oID));?>" />
-=======
-        <input type="hidden" name="akey" value="<?php echo zen_pin_get_token_by_order(zen_db_input($oID));?>" />
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
     </form>
       </tr>
       <script type="text/javascript">
@@ -802,11 +775,7 @@ function couponpopupWindow(url) {
 
       </script>
         <?php } ?>
-<<<<<<< HEAD
     <!-- do refund with trexle payments -->
-=======
-    <!-- do refund with pin payments -->
->>>>>>> 525c596717a6d301ad2463a7baeae6cc609ec439
 
       <tr>
         <td colspan="2" align="right" class="noprint"><?php echo '<a href="' . zen_href_link(FILENAME_ORDERS_INVOICE, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_invoice.gif', IMAGE_ORDERS_INVOICE) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS_PACKINGSLIP, 'oID=' . $_GET['oID']) . '" TARGET="_blank">' . zen_image_button('button_packingslip.gif', IMAGE_ORDERS_PACKINGSLIP) . '</a> <a href="' . zen_href_link(FILENAME_ORDERS, zen_get_all_get_params(array('action'))) . '">' . zen_image_button('button_orders.gif', IMAGE_ORDERS) . '</a>'; ?></td>
@@ -921,15 +890,15 @@ function couponpopupWindow(url) {
     $keywords = zen_db_input(zen_db_prepare_input($_GET['search']));
     $search = " and (o.customers_city like '%" . $keywords . "%' or o.customers_postcode like '%" . $keywords . "%' or o.date_purchased like '%" . $keywords . "%' or o.billing_name like '%" . $keywords . "%' or o.billing_company like '%" . $keywords . "%' or o.billing_street_address like '%" . $keywords . "%' or o.delivery_city like '%" . $keywords . "%' or o.delivery_postcode like '%" . $keywords . "%' or o.delivery_name like '%" . $keywords . "%' or o.delivery_company like '%" . $keywords . "%' or o.delivery_street_address like '%" . $keywords . "%' or o.billing_city like '%" . $keywords . "%' or o.billing_postcode like '%" . $keywords . "%' or o.customers_email_address like '%" . $keywords . "%' or o.customers_name like '%" . $keywords . "%' or o.customers_company like '%" . $keywords . "%' or o.customers_street_address  like '%" . $keywords . "%' or o.customers_telephone like '%" . $keywords . "%' or o.ip_address  like '%" . $keywords . "%')";
     $new_table = '';
-//    $new_fields = ", o.customers_company, o.customers_email_address, o.customers_street_address, o.delivery_company, o.delivery_name, o.delivery_street_address, o.billing_company, o.billing_name, o.billing_street_address, o.payment_module_code, o.shipping_module_code, o.ip_address ";
+//    $new_fields = ", o.customers_company, o.customers_email_address, o.customers_street_address, o.delivery_company, o.delivery_name, o.delivery_street_address, o.billing_company, o.billing_name, o.billing_street_address, o.payment_module_code, o.shiptrexleg_module_code, o.ip_address ";
   }
 } // eof: search orders or orders_products
-    $new_fields = ", o.customers_company, o.customers_email_address, o.customers_street_address, o.delivery_company, o.delivery_name, o.delivery_street_address, o.billing_company, o.billing_name, o.billing_street_address, o.payment_module_code, o.shipping_module_code, o.ip_address ";
+    $new_fields = ", o.customers_company, o.customers_email_address, o.customers_street_address, o.delivery_company, o.delivery_name, o.delivery_street_address, o.billing_company, o.billing_name, o.billing_street_address, o.payment_module_code, o.shiptrexleg_module_code, o.ip_address ";
 ?>
 <?php
     if (isset($_GET['cID'])) {
       $cID = zen_db_prepare_input($_GET['cID']);
-      $orders_query_raw =   "select o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shipping_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
+      $orders_query_raw =   "select o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shiptrexleg_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
                             $new_fields . "
                             from (" . TABLE_ORDERS_STATUS . " s, " .
                             TABLE_ORDERS . " o " .
@@ -941,7 +910,7 @@ function couponpopupWindow(url) {
 
     } elseif ($_GET['status'] != '') {
       $status = zen_db_prepare_input($_GET['status']);
-      $orders_query_raw = "select o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shipping_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
+      $orders_query_raw = "select o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shiptrexleg_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
                           $new_fields . "
                           from (" . TABLE_ORDERS_STATUS . " s, " .
                           TABLE_ORDERS . " o " .
@@ -953,7 +922,7 @@ function couponpopupWindow(url) {
 //echo '<BR><BR>I SEE B: ' . $orders_query_raw . '<BR><BR>';
 
     } else {
-      $orders_query_raw = "select " . $search_distinct . " o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shipping_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
+      $orders_query_raw = "select " . $search_distinct . " o.orders_id, o.customers_id, o.customers_name, o.payment_method, o.shiptrexleg_method, o.date_purchased, o.last_modified, o.currency, o.currency_value, s.orders_status_name, ot.text as order_total" .
                           $new_fields . "
                           from (" . TABLE_ORDERS_STATUS . " s, " .
                           TABLE_ORDERS . " o " .
@@ -1006,7 +975,7 @@ if (($_GET['page'] == '' or $_GET['page'] <= 1) and $_GET['oID'] != '') {
       if (($orders->fields['delivery_street_address'] != $orders->fields['billing_street_address'] and $orders->fields['delivery_street_address'] != '')) {
         $show_difference = zen_image(DIR_WS_IMAGES . 'icon_status_red.gif', TEXT_BILLING_SHIPPING_MISMATCH, 10, 10) . '&nbsp;';
       }
-      $show_payment_type = $orders->fields['payment_module_code'] . '<br />' . $orders->fields['shipping_module_code'];
+      $show_payment_type = $orders->fields['payment_module_code'] . '<br />' . $orders->fields['shiptrexleg_module_code'];
 ?>
                 <td class="dataTableContent" align="right"><?php echo $show_difference . $orders->fields['orders_id']; ?></td>
                 <td class="dataTableContent" align="left" width="50"><?php echo $show_payment_type; ?></td>
@@ -1073,7 +1042,7 @@ if (($_GET['page'] == '' or $_GET['page'] <= 1) and $_GET['oID'] != '') {
         $contents[] = array('text' => TEXT_INFO_IP_ADDRESS . ' ' . $oInfo->ip_address);
         if (zen_not_null($oInfo->last_modified)) $contents[] = array('text' => TEXT_DATE_ORDER_LAST_MODIFIED . ' ' . zen_date_short($oInfo->last_modified));
         $contents[] = array('text' => '<br />' . TEXT_INFO_PAYMENT_METHOD . ' '  . $oInfo->payment_method);
-        $contents[] = array('text' => '<br />' . ENTRY_SHIPPING . ' '  . $oInfo->shipping_method);
+        $contents[] = array('text' => '<br />' . ENTRY_SHIPPING . ' '  . $oInfo->shiptrexleg_method);
 
 // check if order has open gv
         $gv_check = $db->Execute("select order_id, unique_id

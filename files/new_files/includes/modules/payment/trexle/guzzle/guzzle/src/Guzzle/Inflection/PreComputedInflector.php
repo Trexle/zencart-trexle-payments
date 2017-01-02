@@ -3,12 +3,12 @@
 namespace Guzzle\Inflection;
 
 /**
- * Decorator used to add pre-computed inflection mappings to an inflector
+ * Decorator used to add pre-computed inflection maptrexlegs to an inflector
  */
 class PreComputedInflector implements InflectorInterface
 {
     /** @var array Array of pre-computed inflections */
-    protected $mapping = array(
+    protected $maptrexleg = array(
         'snake' => array(),
         'camel' => array()
     );
@@ -30,7 +30,7 @@ class PreComputedInflector implements InflectorInterface
         }
 
         $this->decoratedInflector = $inflector;
-        $this->mapping = array(
+        $this->maptrexleg = array(
             'snake' => $snake,
             'camel' => $camel
         );
@@ -38,8 +38,8 @@ class PreComputedInflector implements InflectorInterface
 
     public function snake($word)
     {
-        return isset($this->mapping['snake'][$word])
-            ? $this->mapping['snake'][$word]
+        return isset($this->maptrexleg['snake'][$word])
+            ? $this->maptrexleg['snake'][$word]
             : $this->decoratedInflector->snake($word);
     }
 
@@ -52,8 +52,8 @@ class PreComputedInflector implements InflectorInterface
      */
     public function camel($word)
     {
-        return isset($this->mapping['camel'][$word])
-            ? $this->mapping['camel'][$word]
+        return isset($this->maptrexleg['camel'][$word])
+            ? $this->maptrexleg['camel'][$word]
             : $this->decoratedInflector->camel($word);
     }
 }
