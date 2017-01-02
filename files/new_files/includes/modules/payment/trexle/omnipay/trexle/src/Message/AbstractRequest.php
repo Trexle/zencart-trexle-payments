@@ -29,7 +29,7 @@ use Guzzle\Http\Message\RequestInterface;
  * flag is set then the Test Endpoint is being used.
  *
  * @see \Omnipay\Trexle\Gateway
- * @link https://trexle.net.au/docs/api
+ * @link https://docs.trexle.com
  */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
@@ -40,7 +40,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      *
      * @var string URL
      */
-    protected $testEndpoint = 'https://test-core.trexle.com/api/v1/';
+    protected $testEndpoint = 'https://core.trexle.com/api/v1/';
 
     /**
      * Live Endpoint URL
